@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "/about", to: "homes#about"
-    get '/users/my_page', to: 'users#show', as: 'my_page'
+    get "/users/my_page", to: "users#show", as: "my_page"
+    get "/users/:id/post_list", to: "users#post_list", as: "users_post_list"
     resource :users, only: [:edit, :update]
-    resources :posts do
+    resources :posts, except: [:index] do
       resources :comments, only: [:create, :destroy]
     end
     get "/search", to: "searches#search"
@@ -16,6 +17,10 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
 
   namespace :admin do

@@ -1,2 +1,30 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <h4>プロフィール編集</h4>
+      <%= render 'layouts/errors', obj: @user %>
+
+      <%= form_with model: @user, url: users_path, local: true, method: :patch do |f| %>
+
+      <div class="field">
+        <%= f.label :image, "プロフィール画像" %>
+        <%= f.file_field :image, accept: 'image/*', class: "form-control-file" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :name, "ニックネーム" %><br />
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :introduction, "プロフィール" %><br />
+        <%= f.text_area :introduction, autofocus: true %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "保存する", class: "btn btn-sm btn-success" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,13 @@
   </head>
 
   <body>
-    <%= yield %>
+
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/notice' %>
+
+      <%= yield %>
+
+      <%= render 'layouts/footer' %>
+
   </body>
 </html>

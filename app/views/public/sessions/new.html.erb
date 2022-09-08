@@ -23,4 +23,8 @@
   </div>
 <% end %>
 
+<div class="row">
+  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm mb-3 sign_in", method: :post %>
+</div>
+
 <%= render "public/shared/links" %>
