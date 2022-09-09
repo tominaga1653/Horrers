@@ -1,0 +1,19 @@
+<div class="row border rounded p-3">
+  <div class="col-md-3">
+    <% if movie['poster_path'].present? %>
+      <%= image_tag "https://image.tmdb.org/t/p/w342" + movie['poster_path'] , class: "card-img" %>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <p class="font-weight-bold"><%= movie['title'] %></p>
+    <% if movie['original_language'] != "ja" %>
+      <p><%= movie['original_title'] %></p>
+    <% end %>
+    <p><%= movie['release_date'] %></p>
+    <p>あらすじ</p>
+    <p><%= movie['overview'] %></p>
+    <p class="text-center">
+      <%= link_to "レビューする", new_post_path(category: "movie", tmdb_no: movie['id']), class: "btn btn-sm btn-outline-secondary w-25" %>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="row border rounded p-3">
+  <div class="col-md-3">
+    <% if tv['poster_path'].present? %>
+      <%= image_tag "https://image.tmdb.org/t/p/w342" + tv['poster_path'] , class: "card-img" %>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <p class="font-weight-bold"><%= tv['name'] %></p>
+    <% if tv['original_language'] != "ja" %>
+      <p><%= tv['original_name'] %></p>
+    <% end %>
+    <p><%= tv['first_air_date'] + "～" + tv['last_air_date'] %></p>
+    <p>あらすじ</p>
+    <p><%= tv['overview'] %></p>
+    <p class="text-center">
+      <%= link_to "レビューする", new_post_path(category: "tv", tmdb_no: tv['id']), class: "btn btn-sm btn-outline-secondary w-25" %>
+    </p>
+  </div>
+</div>

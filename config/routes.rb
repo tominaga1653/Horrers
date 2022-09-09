@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     resources :posts, except: [:index] do
       resources :comments, only: [:create, :destroy]
     end
-    get "/search", to: "searches#search"
-    get "/search/detail", to: "searches#detail"
+    get "/search", to: "searchs#search"
+    get "/search/detail", to: "searchs#detail"
   end
 
   devise_for :users, skip: [:passwords], controllers: {

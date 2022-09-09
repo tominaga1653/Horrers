@@ -1,2 +1,12 @@
-<h1>Public::Searchs#detail</h1>
-<p>Find me in app/views/public/searchs/detail.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h5>作品詳細</h5>
+  </div>
+
+    <% if @category == "movie" %>
+      <%= render "movie_detail", movie: @movie %>
+    <% else %>
+      <%= render "tv_detail", tv: @tv %>
+    <% end %>
+
+</div>

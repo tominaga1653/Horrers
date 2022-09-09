@@ -1,0 +1,26 @@
+<div class="row">
+  <h5><%= content %>の検索結果（<%= movies.results.count %>件）</h5>
+</div>
+<% if movies.present? %>
+  <% i = 0 %>
+  <% while i < movies.results.count %>
+    <div class="row border rounded my-3">
+      <div class="col-md-4">
+        <% if movies.results[i]['poster_path'].present? %>
+          <%= image_tag "https://image.tmdb.org/t/p/w342" + movies.results[i]['poster_path'], class: "card-img" %>
+        <% end %>
+      </div>
+      <div class="col-md-8">
+        <p class="font-weight-bold"><%= movies.results[i]['title'] %></p>
+        <P><%= movies.results[i]['release_date'] %></P>
+        <P>あらすじ</p>
+        <p><%= movies.results[i]['overview'] %></p>
+        <%= link_to "詳細", search_detail_path(category: "movie", tmdb_no: movies.results[i]['id']), class: "btn btn-sm btn-outline-secondary w-25" %>
+      </div>
+    </div>
+    <% i += 1 %>
+  <% end %>
+<% else %>
+  <P>見つかりませんでした。</P>
+<% end %>
+
