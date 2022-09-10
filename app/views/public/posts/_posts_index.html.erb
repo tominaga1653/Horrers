@@ -1,0 +1,79 @@
+<% posts.each do |post| %>
+  <div class="row border rounded p-3">
+    <div class="col-3">
+      <%= image_tag post.get_tmdb_data[:image_url], class: "card-img" %>
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="col-8">
+      <div class="row">
+        <P class="font-weight-bold"><%= post.get_tmdb_data[:title] %></P>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <%= image_tag post.user.get_image(70, 70), class: "rounded-circle" %>
+        </div>
+        <div class="col">
+          <p><%= post.user.name %></p>
+          <p><%= "投稿日　" + post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="total-rate col-6" data-score="<%= post.total_rate %>">total　</div>
+        <div class="story-rate col-6" data-score="<%= post.story_rate %>">story　</div>
+        <div class="fear-rate col-6" data-score="<%= post.fear_rate %>">fear　</div>
+        <div class="splatter-rate col-6" data-score="<%= post.splatter_rate %>">splatter　</div>
+      </div>
+
+      <div class="row pt-4">
+        <div class="col-6">
+          <%= link_to "レビューを見る", post_path(post), class: "btn btn-sm btn-outline-secondary w-75" %>
+        </div>
+
+        <% if post.is_spoiler == true %>
+          <div class="col">
+            <p><i class="fas fa-exclamation-triangle text-warning"></i> ネタバレを含みます！</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  $('.total-rate').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+  $('.story-rate').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+  $('.fear-rate').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+  $('.splatter-rate').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

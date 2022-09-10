@@ -1,13 +1,16 @@
 <div class="container">
   <div class="row">
-    <h4>マイページ</h4>
+    <h4 class="col-8 mx-auto">マイページ</h4>
   </div>
 
   <div class="row">
-    <div class="col-md-2 ml-auto">
+    <div class="col-md-5 text-right">
       <%= image_tag @user.get_image(200, 200), class: "rounded-circle" %>
     </div>
-    <div class="col-md-7">
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-5">
       <div class="row">
         ニックネーム<br>
        <%= @user.name %>
@@ -23,9 +26,9 @@
   </div>
 
   <div class="row">
-    <h4>投稿一覧</h4>
+    <h5 class="col-8 mx-auto">投稿一覧</h5>
   </div>
-  <div class="row">
 
-  </div>
+  <%= render "public/posts/posts_index", posts: @posts %>
+
 </div>

@@ -1,2 +1,99 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h4 class="col-8 mx-auto">レビュー詳細</h4>
+  </div>
+
+  <div class="row">
+    <div class="col-3 ml-auto">
+      <%= image_tag @post.get_tmdb_data[:image_url], class: "card-img" %>
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="col-7">
+      <div class="row border-bottom">
+          <p class="font-weight-bold"><%= @post.get_tmdb_data[:title] %></p>
+      </div>
+
+      <div class="row border-bottom pt-2">
+        <%= image_tag @post.user.get_image(130, 130), class: "rounded-circle" %>
+        <P>
+          <%= @post.user.name %><br>
+          <%= "投稿日　" + @post.created_at.strftime('%Y/%m/%d') %>
+        </P>
+      </div>
+
+      <div class="row pt-1">
+        <p>レート</p>
+      </div>
+
+      <div class="row border-bottom pb-1">
+        <div class="total-rate col-6" data-score="<%= @post.total_rate %>">total　</div>
+        <div class="story-rate col-6" data-score="<%= @post.story_rate %>">story　</div>
+        <div class="fear-rate col-6" data-score="<%= @post.fear_rate %>">fear　</div>
+        <div class="splatter-rate col-6" data-score="<%= @post.splatter_rate %>">splatter　</div>
+      </div>
+
+      <div class="row pt-1">
+        <p>レビュー　</P>
+        <% if @post.is_spoiler == true %>
+          <p><i class="fas fa-exclamation-triangle text-warning"></i>　ネタバレを含みます！</p>
+        <% end %>
+      </div>
+
+      <div class="row border-bottom pb-1">
+        <%= @post.review %>
+      </div>
+
+      <% if @post.user == current_user %>
+        <div class="row py-3">
+          <div class="col text-right">
+            <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-outline-secondary w-50" %>
+          </div>
+          <div class="col text-left">
+            <%= link_to "削除する", post_path(@post), method: :delete,
+              data: { confirm: '本当に削除してもよろしいですか？' }, class: "btn btn-sm btn-outline-danger w-50" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-1"></div>
+  </div>
+</div>
+
+
+<script>
+  $('.total-rate').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+  $('.story-rate').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+  $('.fear-rate').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+  $('.splatter-rate').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

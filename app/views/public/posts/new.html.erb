@@ -1,2 +1,74 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h5>新規レビュー</h5>
+  </div>
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <%= render "layouts/errors", obj: @post %>
+      <%= form_with model: @post, url: posts_path, local: true, method: :post do |f| %>
+        <%= f.hidden_field :category, :value => @category %>
+        <%= f.hidden_field :tmdb_no, :value => @tmdb_no %>
+        <div class="row">
+          <p>レート</p>
+        </div>
+        <div class="row">
+          <div id="total-form" class="col-6">
+            <label>total　</label>
+            <%= f.hidden_field :total_rate, :value => 'score' %>
+          </div>
+          <div id="story-form" class="col-6">
+            <label>story　</label>
+            <%= f.hidden_field :story_rate, :value => 'score' %>
+          </div>
+          <div id="fear-form" class="col-6">
+            <label>fear　</label>
+            <%= f.hidden_field :fear_rate, :value => 'score' %>
+          </div>
+          <div id="splatter-form" class="col-6">
+            <label>splatter　</label>
+            <%= f.hidden_field :splatter_rate, :value => 'score' %>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <p>レビュー</p>
+          <%= f.text_area :review, rows:'5', class: "form-control form-control-sm" %>
+        </div>
+        <div class="row p-3">
+          <div class="pr-2"><%= f.check_box :is_spoiler %></div>
+          <i class="fas fa-exclamation-triangle text-warning"></i>
+          <p>レビューにネタバレが含まれる場合はチェックを入れてください。</p>
+        </div>
+        <p class="text-center">
+          <%= f.submit "投稿する", class: "btn btn-sm btn-outline-secondary" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+    $('#total-form').raty({
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      scoreName: 'post[total_rate]',
+      half: false,
+    });
+    $('#story-form').raty({
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      scoreName: 'post[story_rate]',
+      half: false,
+    });
+    $('#fear-form').raty({
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      scoreName: 'post[fear_rate]',
+      half: false,
+    });
+    $('#splatter-form').raty({
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      scoreName: 'post[splatter_rate]',
+      half: false,
+    });
+</script>

@@ -1,1 +1,20 @@
-top page
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+
+    <div class="col-8">
+      <div class="row">
+        <h5>新着投稿一覧</h5>
+      </div>
+
+      <%= render "public/posts/posts_index", posts: @posts %>
+
+      <div class="row">
+        <p><%= paginate @posts %></p>
+      </div>
+
+    </div>
+  </div>
+</div>

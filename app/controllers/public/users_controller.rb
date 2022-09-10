@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
+    @posts = @user.posts
   end
 
   def edit
@@ -34,5 +35,6 @@ class Public::UsersController < ApplicationController
       redirect_to my_page_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
+
 
 end
