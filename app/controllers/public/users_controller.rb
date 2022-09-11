@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
-    @posts = @user.posts
+    @posts = @user.posts.order(id: "DESC").page(params[:page]).per(10)
   end
 
   def edit
@@ -21,6 +21,8 @@ class Public::UsersController < ApplicationController
   end
 
   def post_list
+    @user = User.find(params[:id])
+    @posts = @user.posts.order(id: "DESC").page(params[:page]).per(10)
   end
 
   private

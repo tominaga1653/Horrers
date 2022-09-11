@@ -6,7 +6,7 @@
 
     <div class="col-8">
       <div class="row">
-        <h5 class="py-4">新着投稿一覧</h5>
+        <h5 class="py-4">検索結果（<%= @posts.count %>件）</h5>
       </div>
 
       <%= render "public/posts/posts_index", posts: @posts %>

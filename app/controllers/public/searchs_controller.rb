@@ -15,7 +15,8 @@ class Public::SearchsController < ApplicationController
     else #カテゴリーがタグの場合
       tag = Tag.find_by(name: @content)
       if tag != nil
-        @posts = tag.posts
+        @posts = tag.posts.order(id: "DESC").page(params[:page]).per(10)
+        render :tag_posts_list
       else
         redirect_to root_path, notice: "入力されたタグは見つかりませんでした。"
       end
@@ -25,11 +26,17 @@ class Public::SearchsController < ApplicationController
   def detail
     @category = params[:category]
     @tmdb_no = params[:tmdb_no]
+    @posts = Post.where(category: @category, tmdb_no: @tmdb_no)
     if @category == "movie"
       @movie = Tmdb::Movie.detail(@tmdb_no)
     else
       @tv = Tmdb::TV.detail(@tmdb_no)
     end
+  end
+
+  def tag_posts_list
+    tag = Tag.find(params[:id])
+    @posts = tag.posts.order(id: "DESC").page(params[:page]).per(10)
   end
 
 end

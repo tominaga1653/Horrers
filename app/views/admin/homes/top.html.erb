@@ -1,2 +1,25 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <div class="row">
+        <h4 class="py-4">新規レビュー一覧</h4>
+      </div>
+
+      <% @posts.each do |post| %>
+        <div class="row">
+          <div class="col-3">
+            <%= image_tag post.user.get_image(100, 100) %>
+          </div>
+
+          <div class="col-7">
+
+          </div>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <p><%= paginate @posts %></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,13 +4,14 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/about", to: "homes#about"
     get "/users/my_page", to: "users#show", as: "my_page"
-    get "/users/:id/post_list", to: "users#post_list", as: "users_post_list"
+    get "/users/:id/post_list", to: "users#post_list", as: "user_post_list"
     resource :users, only: [:edit, :update]
     resources :posts, except: [:index] do
       resources :comments, only: [:create, :destroy]
     end
     get "/search", to: "searchs#search"
     get "/search/detail", to: "searchs#detail"
+    get "/search/tag/:id", to: "searchs#tag_posts_list", as: "search_tag"
   end
 
   devise_for :users, skip: [:passwords], controllers: {

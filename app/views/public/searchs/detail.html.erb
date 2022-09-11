@@ -1,12 +1,51 @@
 <div class="container">
   <div class="row">
-    <h5>作品詳細</h5>
+    <h4 class="col-8 py-4 mx-auto">作品詳細</h4>
   </div>
 
-    <% if @category == "movie" %>
-      <%= render "movie_detail", movie: @movie %>
-    <% else %>
-      <%= render "tv_detail", tv: @tv %>
-    <% end %>
+  <% if @category == "movie" %>
+    <%= render "movie_detail", movie: @movie %>
+  <% else %>
+    <%= render "tv_detail", tv: @tv %>
+  <% end %>
 
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h4 class="py-4 border-bottom">レビュー（<%= @posts.count %>件）</h4>
+      <% @posts.each do |post| %>
+        <div class="row">
+          <div class="col-2">
+            <%= link_to user_post_list_path(post.user.id) do %>
+              <%= image_tag post.user.get_image(70, 70), class: "rounded-circle" %>
+            <% end %>
+          </div>
+          <div class="col">
+            <p><%= post.user.name %></p>
+            <p><%= "投稿日　" + post.created_at.strftime('%Y/%m/%d') %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="total-rate col-6" data-score="<%= post.total_rate %>">total　</div>
+          <div class="story-rate col-6" data-score="<%= post.story_rate %>">story　</div>
+          <div class="fear-rate col-6" data-score="<%= post.fear_rate %>">fear　</div>
+          <div class="splatter-rate col-6" data-score="<%= post.splatter_rate %>">splatter　</div>
+        </div>
+
+        <div class="row pt-4 pb-3 mb-3 border-bottom">
+          <div class="col-6">
+            <%= link_to "レビューを見る", post_path(post), class: "btn btn-sm btn-outline-secondary w-75" %>
+          </div>
+
+          <% if post.is_spoiler == true %>
+            <div class="col">
+              <p><i class="fas fa-exclamation-triangle text-warning"></i> ネタバレを含みます！</p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+<%= render "layouts/read_only_raty" %>

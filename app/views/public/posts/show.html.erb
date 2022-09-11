@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row">
-    <h4 class="col-8 mx-auto">レビュー詳細</h4>
+    <h4 class="col-8 py-4 mx-auto">レビュー詳細</h4>
   </div>
 
   <div class="row">
     <div class="col-3 ml-auto">
-      <%= image_tag @post.get_tmdb_data[:image_url], class: "card-img" %>
+      <%= link_to search_detail_path(category: @post.category, tmdb_no: @post.tmdb_no) do %>
+        <%= image_tag @post.get_tmdb_data[:image_url], class: "card-img" %>
+      <% end %>
     </div>
 
     <div class="col-1"></div>
@@ -16,7 +18,7 @@
       </div>
 
       <div class="row border-bottom pt-2">
-        <%= image_tag @post.user.get_image(130, 130), class: "rounded-circle" %>
+        <%= image_tag @post.user.get_image(100, 100), class: "rounded-circle" %>
         <P>
           <%= @post.user.name %><br>
           <%= "投稿日　" + @post.created_at.strftime('%Y/%m/%d') %>
@@ -45,6 +47,20 @@
         <%= @post.review %>
       </div>
 
+      <div class="row pt-1">
+        <p>タグ</p>
+      </div>
+
+      <div class="row border-bottom pb-1">
+        <% if @post.tags != nil %>
+          <% @post.tags.each do |tag| %>
+            <%= link_to search_tag_path(tag.id) do %>
+              <span class="pr-3"><i class="fas fa-tag pr-1"></i><%= tag.name %></span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
       <% if @post.user == current_user %>
         <div class="row py-3">
           <div class="col text-right">
@@ -62,38 +78,4 @@
   </div>
 </div>
 
-
-<script>
-  $('.total-rate').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-  $('.story-rate').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-  $('.fear-rate').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-  $('.splatter-rate').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-</script>
+<%= render "layouts/read_only_raty" %>

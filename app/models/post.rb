@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many   :comments,  dependent: :destroy
   has_many   :post_tags, dependent: :destroy
+  has_many   :tags,      through:   :post_tags
 
   validates :category,   presence: true
   validates :tmdb_no,    presence: true
@@ -45,6 +46,25 @@ class Post < ApplicationRecord
       return data
     end
   end
+
+  def save_tag(sent_tags)
+    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    old_tags = current_tags - sent_tags
+    new_tags = sent_tags - current_tags
+
+    # 不要なポストタグを消す
+    old_tags.each do |old|
+      tag = Tag.find_by(name: old)
+      post_tag = PostTag.find_by(post_id: self.id, tag_id: tag.id)
+      post_tag.destroy
+    end
+
+    # 新しいタグを保存
+    new_tags.each do |new|
+      new_post_tag = Tag.find_or_create_by(name: new)
+      PostTag.create({post_id: self.id, tag_id: new_post_tag.id})
+    end
+ end
 
 
 end

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <h4 class="col-8 mx-auto"><%= @user.name %>さんの投稿一覧</h4>
+  </div>
+
+  <div class="row py-3">
+    <div class="col-4 text-right">
+      <%= image_tag @user.get_image(200, 200), class: "rounded-circle" %>
+    </div>
+
+    <div class="col-5">
+      <P class="font-weight-bold"><%= @user.name %></P>
+      <P><%= @user.introduction %></P>
+    </div>
+  </div>
+
+  <div class="row">
+    <h5 class="col-8 mx-auto">投稿一覧</h5>
+  </div>
+
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <%= render "public/posts/posts_index", posts: @posts %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <p><%= paginate @posts %></p>
+  </div>
+</div>

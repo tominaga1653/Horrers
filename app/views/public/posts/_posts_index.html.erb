@@ -13,7 +13,9 @@
 
       <div class="row">
         <div class="col-2">
-          <%= image_tag post.user.get_image(70, 70), class: "rounded-circle" %>
+          <%= link_to user_post_list_path(post.user.id) do %>
+            <%= image_tag post.user.get_image(70, 70), class: "rounded-circle" %>
+          <% end %>
         </div>
         <div class="col">
           <p><%= post.user.name %></p>
@@ -22,7 +24,10 @@
       </div>
 
       <div class="row">
-        <div class="total-rate col-6" data-score="<%= post.total_rate %>">total　</div>
+        <div class="col-6">
+          <label>total</label>
+          <span class="total-rate " data-score="<%= post.total_rate %>"></span>
+        </div>
         <div class="story-rate col-6" data-score="<%= post.story_rate %>">story　</div>
         <div class="fear-rate col-6" data-score="<%= post.fear_rate %>">fear　</div>
         <div class="splatter-rate col-6" data-score="<%= post.splatter_rate %>">splatter　</div>
@@ -43,37 +48,4 @@
   </div>
 <% end %>
 
-<script>
-  $('.total-rate').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-  $('.story-rate').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-  $('.fear-rate').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-  $('.splatter-rate').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-</script>
+<%= render "layouts/read_only_raty" %>

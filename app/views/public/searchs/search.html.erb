@@ -3,13 +3,12 @@
     <div class="col-md-3">
       <%= render "layouts/sidebar" %>
     </div>
+
     <div class="col-md-9">
       <% if @category == "movie" %>
         <%= render "movie_results", movies: @movies, content: @content %>
-      <% elsif @category == "tv" %>
-        <%= render "tv_results", tvs: @tvs, content: @content %>
       <% else %>
-        <%= render "tag_results", posts: @posts, content: @content %>
+        <%= render "tv_results", tvs: @tvs, content: @content %>
       <% end %>
     </div>
   </div>
