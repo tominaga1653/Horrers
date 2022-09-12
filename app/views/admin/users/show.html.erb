@@ -1,2 +1,55 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <div class="row">
+        <h4 class="py-4">ユーザー詳細</h4>
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          <%= image_tag @user.get_image(100, 100) %>
+        </div>
+
+        <div class="col-8">
+          <div class="row border-bottom py-2">
+            <div class="col-3">
+            ユーザー名
+            </div>
+
+            <div class="col">
+              <%= @user.name %>
+            </div>
+          </div>
+
+          <div class="row border-bottom py-2">
+            <div class="col-3">
+            プロフィール
+            </div>
+
+            <div class="col">
+              <%= @user.introduction %>
+            </div>
+          </div>
+
+          <div class="row border-bottom py-2">
+            <div class="col-3">
+            アカウント
+            </div>
+
+            <div class="col">
+              <% if @user.is_stopped == true %>
+                <text>停止</text>
+              <% else %>
+                <text>有効</text>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <%= link_to "編集する", edit_admin_user_path(@user), class: "btn btn-sm btn-outline-secondary mt-3 w-50" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,10 +26,25 @@
         </div>
 
         <div class="row">
-          <div class="total-rate col-6" data-score="<%= post.total_rate %>">total　</div>
-          <div class="story-rate col-6" data-score="<%= post.story_rate %>">story　</div>
-          <div class="fear-rate col-6" data-score="<%= post.fear_rate %>">fear　</div>
-          <div class="splatter-rate col-6" data-score="<%= post.splatter_rate %>">splatter　</div>
+          <div class="col-2">　total</div>
+          <div class="col-4">
+            <div class="total-rate" data-score="<%= post.total_rate %>"></div>
+          </div>
+
+          <div class="col-2">　story</div>
+          <div class="col-4">
+            <div class="story-rate" data-score="<%= post.story_rate %>"></div>
+          </div>
+
+          <div class="col-2">　fear</div>
+          <div class="col-4">
+            <div class="fear-rate" data-score="<%= post.fear_rate %>"></div>
+          </div>
+
+          <div class="col-2">　splatter</div>
+          <div class="col-4">
+            <div class="splatter-rate" data-score="<%= post.splatter_rate %>"></div>
+          </div>
         </div>
 
         <div class="row pt-4 pb-3 mb-3 border-bottom">

@@ -1,2 +1,44 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <div class="row">
+        <h4 class="py-4">ユーザー一覧</h4>
+      </div>
+
+      <% @users.each do |user| %>
+        <div class="row border rounded p-1 mb-3">
+          <div class="col-3">
+            <%= image_tag user.get_image(80, 80) %>
+          </div>
+
+          <div class="col-6">
+            <div class="row">
+              <text>ID　<%= user.id %></text>
+            </div>
+
+            <div class="row">
+              <text>ユーザー名　<%= user.name %></text>
+            </div>
+
+            <div class="row">
+              <text>アカウント</text>
+              <% if user.is_stopped == true %>
+                <text>　停止</text>
+              <% else %>
+                <text>　有効</text>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <%= link_to "詳細", admin_user_path(user.id), class: "btn btn-sm btn-outline-secondary w-75 mt-4" %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <p><%= paginate @users %></p>
+      </div>
+    </div>
+  </div>
+</div>
