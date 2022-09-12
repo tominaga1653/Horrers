@@ -1,2 +1,34 @@
-<h1>Admin::Comments#index</h1>
-<p>Find me in app/views/admin/comments/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <div class="row">
+        <h4 class="py-4">新規コメント一覧</h4>
+      </div>
+
+      <% @comments.each do |comment| %>
+        <div class="row border rounded p-2 mb-2">
+          <div class="col-3">
+            <%= image_tag comment.user.get_image(100, 100), class: "rounded-circle" %>
+          </div>
+
+          <div class="col-9">
+            <p>
+              <%= comment.user.name %><br>
+              <%= comment.created_at.strftime('%Y/%m/%d') %><br>
+              <%= comment.comment %>
+            </p>
+
+            <div class="text-center">
+              <%= link_to "詳細", admin_post_path(comment.post.id), class: "btn btn-sm btn-outline-secondary w-50" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+
+      <div class="row">
+        <p><%= paginate @comments %></p>
+      </div>
+    </div>
+  </div>
+</div>

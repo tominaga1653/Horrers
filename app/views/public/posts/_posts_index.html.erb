@@ -1,12 +1,12 @@
 <% posts.each do |post| %>
-  <div class="row border rounded p-3">
+  <div class="row border rounded p-3 my-3">
     <div class="col-3">
       <%= image_tag post.get_tmdb_data[:image_url], class: "card-img" %>
     </div>
 
-    <div class="col-1"></div>
+    <!--<div class="col-1"></div>-->
 
-    <div class="col-8">
+    <div class="col-9">
       <div class="row">
         <P class="font-weight-bold"><%= post.get_tmdb_data[:title] %></P>
       </div>
@@ -24,19 +24,19 @@
       </div>
 
       <div class="row">
-        <div class="col-6">
+        <div class="col-md-12 col-lg-6">
           <label>total　</label>
           <span class="total-rate" data-score="<%= post.total_rate %>"></span>
         </div>
-        <div class="col-6">
+        <div class="col-md-12 col-lg-6">
           <label>story　</label>
           <span class="story-rate" data-score="<%= post.story_rate %>"></span>
         </div>
-        <div class="col-6">
+        <div class="col-md-12 col-lg-6">
           <label>fear　</label>
           <span class="fear-rate" data-score="<%= post.fear_rate %>"></span>
         </div>
-        <div class="col-6">
+        <div class="col-md-12 col-lg-6">
           <label>splatter </label>
           <span class="splatter-rate" data-score="<%= post.splatter_rate %>"></span>
         </div>

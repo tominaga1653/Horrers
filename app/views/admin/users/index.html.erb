@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 mx-auto">
+    <div class="col-md-10 col-lg-8 mx-auto">
       <div class="row">
         <h4 class="py-4">ユーザー一覧</h4>
       </div>
 
       <% @users.each do |user| %>
-        <div class="row border rounded p-1 mb-3">
+        <div class="row border rounded p-1 mb-2">
           <div class="col-3">
             <%= image_tag user.get_image(80, 80) %>
           </div>

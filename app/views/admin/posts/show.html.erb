@@ -1,2 +1,58 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <div class="row">
+        <h4 class="py-4">レビュー詳細</h4>
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          <%= link_to admin_user_path(@post.user.id) do %>
+            <%= image_tag @post.user.get_image(100, 100) %>
+          <% end %>
+        </div>
+
+        <div class="col-9">
+          <p>
+            <%= @post.user.name %><br>
+            <%= @post.created_at.strftime('%Y/%m/%d') %><br>
+            <%= @post.review %>
+          </p>
+
+          <div class="text-center">
+            <%= link_to "削除", admin_post_path(@post.id), method: :delete,
+            data: { confirm: '本当に削除してもよろしいですか？' }, class: "btn btn-sm btn-outline-danger w-50" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <h4 class="py-4">コメント（<%= @post.comments.count %>件）</h4>
+      </div>
+
+      <% @post.comments.each do |comment| %>
+        <div class="row border rounded mb-2">
+          <div class="col-3">
+            <%= link_to admin_user_path(comment.user.id) do %>
+              <%= image_tag comment.user.get_image(70, 70), class: "rounded-circle" %>
+            <% end %>
+          </div>
+
+          <div class="col-9">
+            <p>
+              <%= comment.user.name %><br>
+              <%= comment.created_at.strftime('%Y/%m/%d') %><br>
+              <%= comment.comment %>
+            </p>
+
+            <div class="text-center">
+              <%= link_to "削除", admin_comment_path(comment.id), method: :delete,
+                data: { confirm: '本当に削除してもよろしいですか？' }, class: "btn btn-sm btn-outline-danger mb-2 w-50" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
