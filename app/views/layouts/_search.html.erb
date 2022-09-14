@@ -8,15 +8,17 @@
             <%= radio_button_tag("category", "movie", checked=true) %>
             <%= label_tag("category_movie", "映画") %>
           </span>
+
           <span class="ml-3">
             <%= radio_button_tag("category", "tv") %>
             <%= label_tag("category_tv", "ドラマ") %>
           </span>
+
           <span class="mx-3">
             <%= radio_button_tag("category", "tag") %>
             <%= label_tag("category_tag", "タグ") %>
           </span>
-          <%= submit_tag("検索") %>
+          <%= submit_tag "検索", class: "btn btn-sm btn-light" %>
         <% end %>
       </div>
     </div>

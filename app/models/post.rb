@@ -64,7 +64,36 @@ class Post < ApplicationRecord
       new_post_tag = Tag.find_or_create_by(name: new)
       PostTag.create({post_id: self.id, tag_id: new_post_tag.id})
     end
- end
+  end
+
+  def self.rate_sort(rate, order)
+    if rate == 1
+      if order == "high"
+       self.order(:total_rate => :desc, :id => :desc)
+      else
+        self.order(:total_rate, :id => :desc)
+      end
+    elsif rate == 2
+      if order == "high"
+        self.order(:story_rate => :desc, :id => :desc)
+      else
+        self.order(:story_rate, :id => :desc)
+      end
+    elsif rate == 3
+      if order == "high"
+        self.order(:fear_rate => :desc, :id => :desc)
+      else
+        self.order(:fear_rate, :id => :desc)
+      end
+    else
+      if order == "high"
+        self.order(:splatter_rate => :desc, :id => :desc)
+      else
+        self.order(:splatter_rate, :id => :desc)
+      end
+    end
+  end
+
 
 
 end

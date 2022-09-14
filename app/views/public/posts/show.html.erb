@@ -4,23 +4,21 @@
   </div>
 
   <div class="row">
-    <div class="col-3 ml-auto">
+    <div class="col-sm-4 col-md-3">
       <%= link_to search_detail_path(category: @post.category, tmdb_no: @post.tmdb_no) do %>
         <%= image_tag @post.get_tmdb_data[:image_url], class: "card-img" %>
       <% end %>
     </div>
 
-    <div class="col-1"></div>
-
-    <div class="col-7">
+    <div class="col-sm-8 col-md-9 col-lg-7 mx-auto">
       <div class="row border-bottom">
-          <p class="font-weight-bold"><%= @post.get_tmdb_data[:title] %></p>
+        <p class="font-weight-bold"><%= @post.get_tmdb_data[:title] %></p>
       </div>
 
       <div class="row border-bottom pt-2">
-        <div class="col-2">
+        <div class="col-sm-3 col-md-2 col-lg-2">
           <%= link_to user_post_list_path(@post.user.id) do %>
-            <%= image_tag @post.user.get_image(100, 100), class: "rounded-circle" %>
+            <%= image_tag @post.user.get_image(100, 100), class: "rounded-circle card-img" %>
           <% end %>
         </div>
         <div class="col">
@@ -34,23 +32,23 @@
       </div>
 
       <div class="row border-bottom pb-1">
-        <div class="col-2">total</div>
-        <div class="col-4">
+        <div class="col-sm-4 col-md-2">total</div>
+        <div class="col-sm-8 col-md-4">
           <div class="total-rate" data-score="<%= @post.total_rate %>"></div>
         </div>
 
-        <div class="col-2">story</div>
-        <div class="col-4">
+        <div class="col-sm-4 col-md-2">story</div>
+        <div class="col-sm-8 col-md-4">
           <div class="story-rate" data-score="<%= @post.story_rate %>"></div>
         </div>
 
-        <div class="col-2">fear</div>
-        <div class="col-4">
+        <div class="col-sm-4 col-md-2">fear</div>
+        <div class="col-sm-8 col-md-4">
           <div class="fear-rate" data-score="<%= @post.fear_rate %>"></div>
         </div>
 
-        <div class="col-2">splatter</div>
-        <div class="col-4">
+        <div class="col-sm-4 col-md-2">splatter</div>
+        <div class="col-sm-8 col-md-4">
           <div class="splatter-rate" data-score="<%= @post.splatter_rate %>"></div>
         </div>
       </div>
@@ -119,17 +117,17 @@
         </div>
       <% end %>
 
-      <div class="row pt-5">
-        <div class="col mx-auto text-right">
-          <%= form_with model: [@post, @comment] do |f| %>
-            <%= f.text_area :comment, rows: '2', placeholder: "コメントはこちら", class: "form-control" %>
-            <%= f.submit "コメント", class: "btn btn-sm btn-outline-secondary w-50 mt-2" %>
-          <% end %>
+      <% if user_signed_in? %>
+        <div class="row pt-5">
+          <div class="col mx-auto text-right">
+            <%= form_with model: [@post, @comment] do |f| %>
+              <%= f.text_area :comment, rows: '2', placeholder: "コメントはこちら", class: "form-control" %>
+              <%= f.submit "コメント", class: "btn btn-sm btn-outline-secondary w-50 mt-2" %>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-
-    <div class="col-1"></div>
   </div>
 </div>
 

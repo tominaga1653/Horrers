@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <div class="row">
+        <h4 class="py-4">タグ一覧</h4>
+      </div>
+
+      <div class="row">
+        <table class="col-12 table table-dark table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>タグ</th>
+              <th>投稿件数</th>
+              <th>作成日</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @tags.each do |tag| %>
+            <tr>
+              <th><%= tag.id %></th>
+              <td><%= tag.name %></td>
+              <td><%= tag.posts.count %>件</td>
+              <td><%= tag.created_at.strftime('%Y/%m/%d') %></td>
+              <td>
+                <%= link_to "削除", admin_tag_path(tag.id), method: :delete,
+                data: { confirm: '本当に削除してもよろしいですか？' }, class: "btn btn-sm btn-outline-danger" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <p><%= paginate @tags %></p>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,6 +1,43 @@
-<div class="row">
+<div class="row border-bottom mr-5">
   <h6>レビューレート検索</h6>
 </div>
-<div class="row">
 
-</div>
+<%= form_tag(search_rate_path, method: :get) do %>
+  <div class="row mt-3 mb-2">
+    カテゴリー
+  </div>
+
+  <div class="row mr-5">
+    <div class="col">
+      <%= radio_button_tag("post_category", "movie", checked=true) %>
+      <%= label_tag("post_category_movie", "映画") %>
+    </div>
+    <div class="col">
+      <%= radio_button_tag("post_category", "tv") %>
+      <%= label_tag("post_category_tv", "ドラマ") %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    レート
+  </div>
+
+  <div class="row">
+    <%= select_tag "rate", options_for_select({total: 1, story: 2, fear: 3, splatter: 4}, 1) %>
+  </div>
+
+  <div class="row mr-5">
+    <div class="col">
+      <%= radio_button_tag("high_low", "high", checked=true) %>
+      <%= label_tag("high_low_high", "高い順") %>
+    </div>
+    <div class="col">
+      <%= radio_button_tag("high_low", "low") %>
+      <%= label_tag("high_low_low", "低い順") %>
+    </div>
+  </div>
+
+  <div class="row mt-2 pb-3 mr-5 border-bottom">
+    <%= submit_tag "検索", class: "btn btn-sm btn-light mx-auto" %>
+  </div>
+<% end %>

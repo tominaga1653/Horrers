@@ -1,4 +1,5 @@
 class Admin::CommentsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @comments = Comment.order(id: "DESC").page(params[:page]).per(20)

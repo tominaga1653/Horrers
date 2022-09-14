@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-sm-12 col-md-4">
       <%= render "layouts/sidebar" %>
     </div>
 
-    <div class="col-md-9">
+    <div class="col-md-8 mx-auto">
       <% if @category == "movie" %>
         <%= render "movie_results", movies: @movies, content: @content %>
       <% else %>

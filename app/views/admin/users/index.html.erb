@@ -8,7 +8,7 @@
       <% @users.each do |user| %>
         <div class="row border rounded p-1 mb-2">
           <div class="col-3">
-            <%= image_tag user.get_image(80, 80) %>
+            <%= image_tag user.get_image(80, 80), class: "rounded-circle" %>
           </div>
 
           <div class="col-6">
@@ -31,7 +31,7 @@
           </div>
 
           <div class="col-3">
-            <%= link_to "詳細", admin_user_path(user.id), class: "btn btn-sm btn-outline-secondary w-75 mt-4" %>
+            <%= link_to "詳細", admin_user_path(user.id), class: "btn btn-sm btn-secondary w-75 mt-4" %>
           </div>
         </div>
       <% end %>
