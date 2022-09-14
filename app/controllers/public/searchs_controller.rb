@@ -41,10 +41,8 @@ class Public::SearchsController < ApplicationController
 
   def post_rate_search
     @posts = Post.where(category: params[:post_category])
-    @posts.rate_sort(params[:rate], params[:high_low])
+    @posts = @posts.rate_sort(params[:rate], params[:high_low]).page(params[:page]).per(10)
     render :tag_posts_list
   end
-
-
 
 end

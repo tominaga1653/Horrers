@@ -67,19 +67,19 @@ class Post < ApplicationRecord
   end
 
   def self.rate_sort(rate, order)
-    if rate == 1
+    if rate == "1"
       if order == "high"
        self.order(:total_rate => :desc, :id => :desc)
       else
         self.order(:total_rate, :id => :desc)
       end
-    elsif rate == 2
+    elsif rate == "2"
       if order == "high"
         self.order(:story_rate => :desc, :id => :desc)
       else
         self.order(:story_rate, :id => :desc)
       end
-    elsif rate == 3
+    elsif rate == "3"
       if order == "high"
         self.order(:fear_rate => :desc, :id => :desc)
       else
