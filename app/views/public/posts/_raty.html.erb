@@ -1,0 +1,26 @@
+<script>
+  $('#total-form').raty({
+    starOn: "<%= asset_path('star_on.png') %>",
+    starOff: "<%= asset_path('star_off.png') %>",
+    scoreName: 'post[total_rate]',
+    half: false,
+  });
+  $('#story-form').raty({
+    starOn: "<%= asset_path('book_on.png') %>",
+    starOff: "<%= asset_path('book_off.png') %>",
+    scoreName: 'post[story_rate]',
+    half: false,
+  });
+  $('#fear-form').raty({
+    starOn: "<%= asset_path('skull_on.png') %>",
+    starOff: "<%= asset_path('skull_off.png') %>",
+    scoreName: 'post[fear_rate]',
+    half: false,
+  });
+  $('#splatter-form').raty({
+    starOn: "<%= asset_path('drop_on.png') %>",
+    starOff: "<%= asset_path('drop_off.png') %>",
+    scoreName: 'post[splatter_rate]',
+    half: false,
+  });
+</script>

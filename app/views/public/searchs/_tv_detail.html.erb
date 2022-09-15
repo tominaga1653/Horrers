@@ -1,11 +1,11 @@
-<div class="row border rounded p-3">
-  <div class="col-md-3">
+<div class="row border rounded">
+  <div class="col-6 col-md-3 my-3">
     <% if tv['poster_path'].present? %>
       <%= image_tag "https://image.tmdb.org/t/p/w342" + tv['poster_path'] , class: "card-img" %>
     <% end %>
   </div>
 
-  <div class="col-md-8">
+  <div class="col-md-8 my-3">
     <p class="font-weight-bold"><%= tv['name'] %></p>
 
     <% if tv['original_language'] != "ja" %>

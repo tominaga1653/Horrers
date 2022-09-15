@@ -1,9 +1,13 @@
-<header>
+<header class="shadow" style="background-color: #303030;">
   <nav class="navbar navbar-expand-md navbar-dark">
     <% if admin_signed_in? %>
-      <%= link_to "Horrers", admin_root_path, class: "navbar-brand" %>
+      <%= link_to admin_root_path, class: "navbar-brand" do %>
+        <%= image_tag("logo.png") %>
+      <% end %>
     <% else %>
-      <%= link_to "Horrers", root_path, class: "navbar-brand" %>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag("logo.png") %>
+      <% end %>
     <% end %>
 
     <% if user_signed_in? %>

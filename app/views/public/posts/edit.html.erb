@@ -56,29 +56,4 @@
   </div>
 </div>
 
-<script>
-    $('#total-form').raty({
-      starOn: "<%= asset_path('star-on.png') %>",
-      starOff: "<%= asset_path('star-off.png') %>",
-      scoreName: 'post[total_rate]',
-      half: false,
-    });
-    $('#story-form').raty({
-      starOn: "<%= asset_path('star-on.png') %>",
-      starOff: "<%= asset_path('star-off.png') %>",
-      scoreName: 'post[story_rate]',
-      half: false,
-    });
-    $('#fear-form').raty({
-      starOn: "<%= asset_path('star-on.png') %>",
-      starOff: "<%= asset_path('star-off.png') %>",
-      scoreName: 'post[fear_rate]',
-      half: false,
-    });
-    $('#splatter-form').raty({
-      starOn: "<%= asset_path('star-on.png') %>",
-      starOff: "<%= asset_path('star-off.png') %>",
-      scoreName: 'post[splatter_rate]',
-      half: false,
-    });
-</script>
+<%= render "public/posts/raty" %>

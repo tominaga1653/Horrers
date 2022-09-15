@@ -1,21 +1,23 @@
 <div class="row">
-  <h5><%= content %>のドラマ検索結果（<%= tvs.results.count %>件）</h5>
+  <h5 class="py-4"><%= content %>のドラマ検索結果（<%= tvs.results.count %>件）</h5>
 </div>
 <% unless tvs.empty? %>
   <% i = 0 %>
   <% while i < tvs.results.count %>
     <div class="row border rounded my-3">
-      <div class="col-md-4">
+      <div class="col-6 col-md-4 my-3">
         <% if tvs.results[i]['poster_path'].present? %>
           <%= image_tag "https://image.tmdb.org/t/p/w342" + tvs.results[i]['poster_path'], class: "card-img" %>
         <% end %>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-8 my-3">
         <p class="font-weight-bold"><%= tvs.results[i]['name'] %></p>
         <P><%= tvs.results[i]['first_air_date'] %></P>
         <P>あらすじ</p>
         <p><%= tvs.results[i]['overview'].truncate(100, omission: "．．．．．") %></p>
-        <%= link_to "詳細", search_detail_path(category: "tv", tmdb_no: tvs.results[i]['id']), class: "btn btn-sm btn-secondary w-25" %>
+        <div class="text-center">
+          <%= link_to "詳細", search_detail_path(category: "tv", tmdb_no: tvs.results[i]['id']), class: "btn btn-sm btn-secondary w-25" %>
+        </div>
       </div>
     </div>
     <% i += 1 %>

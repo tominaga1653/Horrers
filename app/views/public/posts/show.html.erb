@@ -4,7 +4,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-4 col-md-3">
+    <div class="col-6 col-sm-4 col-md-3 mb-3">
       <%= link_to search_detail_path(category: @post.category, tmdb_no: @post.tmdb_no) do %>
         <%= image_tag @post.get_tmdb_data[:image_url], class: "card-img" %>
       <% end %>
@@ -15,8 +15,8 @@
         <p class="font-weight-bold"><%= @post.get_tmdb_data[:title] %></p>
       </div>
 
-      <div class="row border-bottom pt-2">
-        <div class="col-sm-3 col-md-2 col-lg-2">
+      <div class="row border-bottom py-2">
+        <div class="col-3 col-sm-3 col-md-2 col-lg-2">
           <%= link_to user_post_list_path(@post.user.id) do %>
             <%= image_tag @post.user.get_image(100, 100), class: "rounded-circle card-img" %>
           <% end %>
@@ -95,9 +95,9 @@
       </div>
 
       <% @post.comments.each do |comment| %>
-        <div class="row border rounded mb-2">
-          <div class="col-3">
-            <%= image_tag comment.user.get_image(70, 70), class: "rounded-circle" %>
+        <div class="row border rounded mb-2 py-2">
+          <div class="col-3 col-sm-3 col-md-2 col-lg-2">
+            <%= image_tag comment.user.get_image(70, 70), class: "rounded-circle card-img" %>
           </div>
 
           <div class="col">
@@ -107,7 +107,7 @@
 
             <% if comment.user == current_user %>
               <div class="row">
-                <div class="col text-right py-2">
+                <div class="col text-right">
                   <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete,
                     class: "btn btn-sm btn-outline-danger w-25" %>
                 </div>
@@ -122,7 +122,7 @@
           <div class="col mx-auto text-right">
             <%= form_with model: [@post, @comment] do |f| %>
               <%= f.text_area :comment, rows: '2', placeholder: "コメントはこちら", class: "form-control" %>
-              <%= f.submit "コメント", class: "btn btn-sm btn-outline-secondary w-50 mt-2" %>
+              <%= f.submit "コメント", class: "btn btn-sm btn-secondary w-50 mt-2" %>
             <% end %>
           </div>
         </div>

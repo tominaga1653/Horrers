@@ -10,13 +10,13 @@
   <% end %>
 
   <div class="row">
-    <div class="col-8 mx-auto">
+    <div class="col-11 col-lg-8 mx-auto">
       <h4 class="py-4 border-bottom">レビュー（<%= @posts.count %>件）</h4>
       <% @posts.each do |post| %>
         <div class="row">
-          <div class="col-2">
+          <div class="col-3 col-md-2 mb-3">
             <%= link_to user_post_list_path(post.user.id) do %>
-              <%= image_tag post.user.get_image(70, 70), class: "rounded-circle" %>
+              <%= image_tag post.user.get_image(70, 70), class: "rounded-circle card-img" %>
             <% end %>
           </div>
           <div class="col">
@@ -26,30 +26,30 @@
         </div>
 
         <div class="row">
-          <div class="col-2">　total</div>
-          <div class="col-4">
+          <div class="col-sm-4 col-md-2">total</div>
+          <div class="col-sm-8 col-md-4">
             <div class="total-rate" data-score="<%= post.total_rate %>"></div>
           </div>
 
-          <div class="col-2">　story</div>
-          <div class="col-4">
+          <div class="col-sm-4 col-md-2">story</div>
+          <div class="col-sm-8 col-md-4">
             <div class="story-rate" data-score="<%= post.story_rate %>"></div>
           </div>
 
-          <div class="col-2">　fear</div>
-          <div class="col-4">
+          <div class="col-sm-4 col-md-2">fear</div>
+          <div class="col-sm-8 col-md-4">
             <div class="fear-rate" data-score="<%= post.fear_rate %>"></div>
           </div>
 
-          <div class="col-2">　splatter</div>
-          <div class="col-4">
+          <div class="col-sm-4 col-md-2">splatter</div>
+          <div class="col-sm-8 col-md-4">
             <div class="splatter-rate" data-score="<%= post.splatter_rate %>"></div>
           </div>
         </div>
 
         <div class="row pt-4 pb-3 mb-3 border-bottom">
           <div class="col-6">
-            <%= link_to "レビューを見る", post_path(post), class: "btn btn-sm btn-outline-secondary w-75" %>
+            <%= link_to "レビューを見る", post_path(post), class: "btn btn-sm btn-secondary w-75" %>
           </div>
 
           <% if post.is_spoiler == true %>
