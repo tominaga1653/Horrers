@@ -1,3 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+.field_with_errors {
+  display: contents;
+  input {
+    @extend .is-invalid;
+  }
+}

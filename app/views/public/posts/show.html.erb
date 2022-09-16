@@ -32,22 +32,22 @@
       </div>
 
       <div class="row border-bottom pb-1">
-        <div class="col-sm-4 col-md-2">total</div>
+        <div class="col-sm-4 col-md-2">Total</div>
         <div class="col-sm-8 col-md-4">
           <div class="total-rate" data-score="<%= @post.total_rate %>"></div>
         </div>
 
-        <div class="col-sm-4 col-md-2">story</div>
+        <div class="col-sm-4 col-md-2">Story</div>
         <div class="col-sm-8 col-md-4">
           <div class="story-rate" data-score="<%= @post.story_rate %>"></div>
         </div>
 
-        <div class="col-sm-4 col-md-2">fear</div>
+        <div class="col-sm-4 col-md-2">Fear</div>
         <div class="col-sm-8 col-md-4">
           <div class="fear-rate" data-score="<%= @post.fear_rate %>"></div>
         </div>
 
-        <div class="col-sm-4 col-md-2">splatter</div>
+        <div class="col-sm-4 col-md-2">Splatter</div>
         <div class="col-sm-8 col-md-4">
           <div class="splatter-rate" data-score="<%= @post.splatter_rate %>"></div>
         </div>
@@ -109,7 +109,7 @@
               <div class="row">
                 <div class="col text-right">
                   <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete,
-                    class: "btn btn-sm btn-outline-danger w-25" %>
+                    data: { confirm: '本当に削除してもよろしいですか？' }, class: "btn btn-sm btn-outline-danger w-25" %>
                 </div>
               </div>
             <% end %>
@@ -121,7 +121,7 @@
         <div class="row pt-5">
           <div class="col mx-auto text-right">
             <%= form_with model: [@post, @comment] do |f| %>
-              <%= f.text_area :comment, rows: '2', placeholder: "コメントはこちら", class: "form-control" %>
+              <%= f.text_area :comment, rows: '2', placeholder: "コメントはこちら", :required => true, class: "form-control" %>
               <%= f.submit "コメント", class: "btn btn-sm btn-secondary w-50 mt-2" %>
             <% end %>
           </div>

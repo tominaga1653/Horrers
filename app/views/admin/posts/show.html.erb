@@ -31,7 +31,7 @@
       </div>
 
       <% @post.comments.each do |comment| %>
-        <div class="row border rounded mb-2">
+        <div class="row border rounded mb-2 py-2">
           <div class="col-3">
             <%= link_to admin_user_path(comment.user.id) do %>
               <%= image_tag comment.user.get_image(70, 70), class: "rounded-circle" %>
@@ -47,7 +47,7 @@
 
             <div class="text-center">
               <%= link_to "削除", admin_comment_path(comment.id), method: :delete,
-                data: { confirm: '本当に削除してもよろしいですか？' }, class: "btn btn-sm btn-outline-danger mb-2 w-50" %>
+                data: { confirm: '本当に削除してもよろしいですか？' }, class: "btn btn-sm btn-outline-danger w-50" %>
             </div>
           </div>
         </div>

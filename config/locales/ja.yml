@@ -1,5 +1,17 @@
 ja:
   activerecord:
+    models:
+      post: 投稿
+      comment: コメント
+    attributes:
+      post:
+        total_rate: トータルレート
+        story_rate: ストーリーレート
+        fear_rate: フィアーレート
+        splatter_rate: スプラッターレート
+        review: レビュー
+      comment:
+        comment: コメント
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

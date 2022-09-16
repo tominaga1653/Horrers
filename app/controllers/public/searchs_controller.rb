@@ -4,8 +4,6 @@ class Public::SearchsController < ApplicationController
   Tmdb::Api.language("ja")
 
   def search
-    # binding.pry
-    # pp Tmdb::Search.movie("Harry")
     @category = params[:category]
     @content = params[:content]
     if @category == "movie"
@@ -44,5 +42,5 @@ class Public::SearchsController < ApplicationController
     @posts = @posts.rate_sort(params[:rate], params[:high_low]).page(params[:page]).per(10)
     render :tag_posts_list
   end
-
+# binding.pry
 end
