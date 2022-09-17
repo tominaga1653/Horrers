@@ -97,7 +97,9 @@
       <% @post.comments.each do |comment| %>
         <div class="row border rounded mb-2 py-2">
           <div class="col-3 col-sm-3 col-md-2 col-lg-2">
-            <%= image_tag comment.user.get_image(70, 70), class: "rounded-circle card-img" %>
+            <%= link_to user_post_list_path(comment.user.id) do %>
+              <%= image_tag comment.user.get_image(70, 70), class: "rounded-circle card-img" %>
+            <% end %>
           </div>
 
           <div class="col">

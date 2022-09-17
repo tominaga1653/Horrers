@@ -28,7 +28,7 @@ class Post < ApplicationRecord
   enum category: { movie: 0, tv: 1 }
 
   require 'themoviedb-api'
-  Tmdb::Api.key("e535ba068fbc7e54b7f4291825b09afe")
+  Tmdb::Api.key(ENV['TMDB_API_KEY'])
   Tmdb::Api.language("ja")
 
   def get_tmdb_data

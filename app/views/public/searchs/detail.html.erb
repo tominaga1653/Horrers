@@ -19,9 +19,13 @@
               <%= image_tag post.user.get_image(70, 70), class: "rounded-circle card-img" %>
             <% end %>
           </div>
+
           <div class="col">
-            <p><%= post.user.name %></p>
-            <p><%= "投稿日　" + post.created_at.strftime('%Y/%m/%d') %></p>
+            <p>
+              <%= post.user.name %><br>
+              <%= "投稿日　" + post.created_at.strftime('%Y/%m/%d') %><br>
+              <%= "コメント　" + post.comments.count.to_s + "件" %>
+            </p>
           </div>
         </div>
 
@@ -48,7 +52,7 @@
         </div>
 
         <div class="row pt-4 pb-3 mb-3 border-bottom">
-          <div class="col-6">
+          <div class="col-11 col-sm-6">
             <%= link_to "レビューを見る", post_path(post), class: "btn btn-sm btn-secondary w-75" %>
           </div>
 
