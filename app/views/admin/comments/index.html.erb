@@ -6,7 +6,7 @@
       </div>
 
       <% @comments.each do |comment| %>
-        <div class="row border rounded p-2 mb-2">
+        <div class="row border border-secondary rounded p-2 mb-2">
           <div class="col-3">
             <%= image_tag comment.user.get_image(100, 100), class: "rounded-circle" %>
           </div>
@@ -27,7 +27,9 @@
 
 
       <div class="row">
-        <p><%= paginate @comments %></p>
+        <div class="mx-auto">
+          <p><%= paginate @comments %></p>
+        </div>
       </div>
     </div>
   </div>

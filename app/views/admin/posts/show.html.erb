@@ -5,7 +5,7 @@
         <h4 class="py-4">レビュー詳細</h4>
       </div>
 
-      <div class="row border rounded p-3">
+      <div class="row border border-secondary rounded p-3">
         <div class="col-3">
           <%= link_to admin_user_path(@post.user.id) do %>
             <%= image_tag @post.user.get_image(100, 100), class: "rounded-circle" %>
@@ -31,7 +31,7 @@
       </div>
 
       <% @post.comments.each do |comment| %>
-        <div class="row border rounded mb-2 py-2">
+        <div class="row border border-secondary rounded mb-2 py-2">
           <div class="col-3">
             <%= link_to admin_user_path(comment.user.id) do %>
               <%= image_tag comment.user.get_image(70, 70), class: "rounded-circle" %>

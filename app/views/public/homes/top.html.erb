@@ -6,13 +6,15 @@
 
     <div class="col-10 col-md-8 mx-auto">
       <div class="row">
-        <h5 class="py-4">新着投稿一覧</h5>
+        <h4 class="pt-4 pb-1 pl-3">新着投稿一覧</h4>
       </div>
 
       <%= render "public/posts/posts_index", posts: @posts %>
 
       <div class="row">
-        <p><%= paginate @posts %></p>
+        <div class="mx-auto">
+          <p><%= paginate @posts %></p>
+        </div>
       </div>
 
     </div>

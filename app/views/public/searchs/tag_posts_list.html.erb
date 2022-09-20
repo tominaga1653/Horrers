@@ -12,7 +12,9 @@
       <%= render "public/posts/posts_index", posts: @posts %>
 
       <div class="row">
-        <p><%= paginate @posts %></p>
+        <div class="mx-auto">
+          <p><%= paginate @posts %></p>
+        </div>
       </div>
 
     </div>

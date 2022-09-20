@@ -6,7 +6,7 @@
       </div>
 
       <% @posts.each do |post| %>
-        <div class="row border rounded p-2 mb-2">
+        <div class="row border border-secondary rounded p-2 mb-2">
           <div class="col-3">
             <%= image_tag post.user.get_image(100, 100), class: "rounded-circle" %>
           </div>
@@ -26,7 +26,9 @@
       <% end %>
 
       <div class="row">
-        <p><%= paginate @posts %></p>
+        <div class="mx-auto">
+          <p><%= paginate @posts %></p>
+        </div>
       </div>
     </div>
   </div>
