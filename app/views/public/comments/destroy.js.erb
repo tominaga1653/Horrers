@@ -1,0 +1,3 @@
+$("#comment-list").html("<%= j(render "public/comments/comment_list", post: @post) %>");
+$(".counter").html("<%= j(render "public/comments/counter", post: @post) %>");
+$("#flash-message").html("<%= j(render "layouts/notice") %>");

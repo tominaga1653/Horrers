@@ -17,7 +17,10 @@
 
       <%= render 'layouts/header' %>
       <%= render 'layouts/search' %>
-      <%= render 'layouts/notice' %>
+
+      <div id="flash-message">
+        <%= render 'layouts/notice' %>
+      </div>
 
       <%= yield %>
 
