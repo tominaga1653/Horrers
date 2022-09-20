@@ -28,3 +28,4 @@
 
 ## 使用素材
 - The Movie Database (TMDB) https://www.themoviedb.org/?language=ja
+- Font Awesome https://fontawesome.com
