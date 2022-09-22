@@ -17,7 +17,8 @@
 作品の備忘録として。
 
 ## 設計書
-...
+[ER図](https://drive.google.com/file/d/1up-HLJWAIVc6et3yUYATDHSkeA8_M79T/view?usp=sharing)
+
 
 ## 開発環境
 - OS：Linux(CentOS)
