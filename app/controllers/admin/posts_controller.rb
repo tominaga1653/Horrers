@@ -9,5 +9,4 @@ class Admin::PostsController < ApplicationController
     Post.find(params[:id]).destroy
     redirect_to admin_root_path, notice: "投稿を削除しました。"
   end
-
 end

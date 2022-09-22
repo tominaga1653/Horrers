@@ -26,17 +26,14 @@ class Public::UsersController < ApplicationController
   end
 
   private
-
-  def user_params
-    params.require(:user).permit(:image, :name, :introduction)
-  end
-
-  def ensure_guest_user
-    @user = current_user
-    if @user.email == "guest@example.com"
-      redirect_to my_page_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    def user_params
+      params.require(:user).permit(:image, :name, :introduction)
     end
-  end
 
-
+    def ensure_guest_user
+      @user = current_user
+      if @user.email == "guest@example.com"
+        redirect_to my_page_path, notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      end
+    end
 end

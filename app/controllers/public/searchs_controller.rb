@@ -1,6 +1,6 @@
 class Public::SearchsController < ApplicationController
-  require 'themoviedb-api'
-  Tmdb::Api.key(ENV['TMDB_API_KEY'])
+  require "themoviedb-api"
+  Tmdb::Api.key(ENV["TMDB_API_KEY"])
   Tmdb::Api.language("ja")
 
   def search
@@ -10,7 +10,7 @@ class Public::SearchsController < ApplicationController
       @movies = Tmdb::Search.movie(@content)
     elsif @category == "tv"
       @tvs = Tmdb::Search.tv(@content)
-    else #カテゴリーがタグの場合
+    else # カテゴリーがタグの場合
       tag = Tag.find_by(name: @content)
       if tag != nil
         @posts = tag.posts.order(id: "DESC").page(params[:page]).per(10)
@@ -42,5 +42,5 @@ class Public::SearchsController < ApplicationController
     @posts = @posts.rate_sort(params[:rate], params[:high_low]).page(params[:page]).per(10)
     render :tag_posts_list
   end
-# binding.pry
+  # binding.pry
 end

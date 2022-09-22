@@ -23,9 +23,7 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-
-  def user_params
-    params.require(:user).permit(:image, :name, :introduction, :is_stopped)
-  end
-
+    def user_params
+      params.require(:user).permit(:image, :name, :introduction, :is_stopped)
+    end
 end

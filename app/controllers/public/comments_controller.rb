@@ -18,16 +18,14 @@ class Public::CommentsController < ApplicationController
   end
 
   private
-
-  def comment_params
-    params.require(:comment).permit(:comment)
-  end
-
-  def ensure_correct_user
-    @comment = Comment.find(params[:id])
-    unless @comment.user == current_user
-      redirect_to root_path
+    def comment_params
+      params.require(:comment).permit(:comment)
     end
-  end
 
+    def ensure_correct_user
+      @comment = Comment.find(params[:id])
+      unless @comment.user == current_user
+        redirect_to root_path
+      end
+    end
 end

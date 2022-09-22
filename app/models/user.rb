@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   def self.guest
-    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+    find_or_create_by!(name: "guestuser", email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end
@@ -20,10 +20,9 @@ class User < ApplicationRecord
 
   def get_image(width, height)
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.png')
-      image.attach(io: File.open(file_path), filename: 'default-image.png', content_type: 'image/png')
+      file_path = Rails.root.join("app/assets/images/no_image.png")
+      image.attach(io: File.open(file_path), filename: "default-image.png", content_type: "image/png")
     end
-      image.variant(gravity: :center, resize: "#{width}x#{height}^", crop: "#{width}x#{height}+0+0").processed
+    image.variant(gravity: :center, resize: "#{width}x#{height}^", crop: "#{width}x#{height}+0+0").processed
   end
-
 end

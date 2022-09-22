@@ -11,5 +11,4 @@ class Admin::CommentsController < ApplicationController
     comment.destroy
     redirect_to admin_post_path(post), notice: "コメントを削除しました。"
   end
-
 end
