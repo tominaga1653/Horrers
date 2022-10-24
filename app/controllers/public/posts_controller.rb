@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   require "themoviedb-api"
-  Tmdb::Api.key("e535ba068fbc7e54b7f4291825b09afe")
+  Tmdb::Api.key(ENV["TMDB_API_KEY"])
   Tmdb::Api.language("ja")
 
   def new
