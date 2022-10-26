@@ -7,17 +7,40 @@
 
       <div class="row border border-secondary rounded p-3">
         <div class="col-3">
-          <%= link_to admin_user_path(@post.user.id) do %>
-            <%= image_tag @post.user.get_image(100, 100), class: "rounded-circle" %>
-          <% end %>
+          <%= image_tag @post.get_tmdb_data[:image_url], class: "card-img" %>
         </div>
 
         <div class="col-9">
-          <p>
-            <%= @post.user.name %><br>
-            <%= @post.created_at.strftime('%Y/%m/%d') %><br>
-            <%= @post.review %>
-          </p>
+          <div class="row border-bottom border-secondary">
+            <p class="font-weight-bold"><%= @post.get_tmdb_data[:title] %></p>
+          </div>
+
+          <div class="row border-bottom border-secondary py-2">
+            <div class="col-3 col-sm-3 col-md-2 col-lg-2">
+              <%= link_to admin_user_path(@post.user.id) do %>
+                <%= image_tag @post.user.get_image(100, 100), class: "rounded-circle card-img" %>
+              <% end %>
+            </div>
+
+            <div class="col">
+              <P><%= @post.user.name %></P>
+              <P><%= "投稿日　" + @post.created_at.strftime('%Y/%m/%d') %></P>
+            </div>
+          </div>
+
+          <div class="row border-bottom border-secondary py-1">
+            <p><%= @post.review %></P>
+          </div>
+
+          <div class="row py-1">
+            <p>タグ：
+              <% if @post.tags != nil %>
+                <% @post.tags.each do |tag| %>
+                  <span class="pr-3"><i class="fas fa-tag pr-1"></i><%= tag.name %></span>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
 
           <div class="text-center">
             <%= link_to "削除", admin_post_path(@post.id), method: :delete,
