@@ -8,21 +8,10 @@ class Post < ApplicationRecord
   validates :tmdb_no,    presence: true
   validates :review,     presence: true
 
-  validates :total_rate, numericality: {
-    less_than_or_equal_to: 5,
-    greater_than_or_equal_to: 0 }, presence: true
-
-  validates :story_rate, numericality: {
-    less_than_or_equal_to: 5,
-    greater_than_or_equal_to: 0 }, presence: true
-
-  validates :fear_rate, numericality: {
-    less_than_or_equal_to: 5,
-    greater_than_or_equal_to: 0 }, presence: true
-
-  validates :splatter_rate, numericality: {
-    less_than_or_equal_to: 5,
-    greater_than_or_equal_to: 0 }, presence: true
+  validates :total_rate,    presence: true
+  validates :story_rate,    presence: true
+  validates :fear_rate,     presence: true
+  validates :splatter_rate, presence: true
 
   enum category: { movie: 0, tv: 1 }
 
