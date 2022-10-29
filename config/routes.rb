@@ -5,6 +5,12 @@ Rails.application.routes.draw do
     get "/users/my_page", to: "users#show", as: "my_page"
     get "/users/:id/post_list", to: "users#post_list", as: "user_post_list"
     resource :users, only: [:edit, :update]
+
+    post "/users/:id/relationships", to: "relationships#create", as: "create_relationships"
+    delete "/users/:id/relationships", to: "relationships#destroy", as: "destroy_relationships"
+    get "/users/:id/followings", to: "relationships#followings", as: "followings"
+    get "/users/:id/followers", to: "relationships#followers", as: "followers"
+
     resources :posts, except: [:index] do
       resources :comments, only: [:create, :destroy]
     end

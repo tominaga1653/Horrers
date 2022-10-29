@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 col-lg-8 mx-auto">
+      <div class="row mb-4">
+        <h4>フォロー</h4>
+      </div>
+
+      <% if @users.exists? %>
+        <%= render 'users_index', users: @users %>
+      <% else %>
+        <div class="row">
+          <p>ユーザーはいません</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

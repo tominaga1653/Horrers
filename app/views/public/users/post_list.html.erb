@@ -15,6 +15,26 @@
   </div>
 
   <div class="row">
+    <div class="col-9 mx-auto d-flex">
+      <div class="ml-auto mr-3">
+        <% if user_signed_in? && @user != current_user %>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", destroy_relationships_path(@user.id), method: :delete, class: "btn btn-sm btn-info" %>
+          <% else %>
+            <%= link_to "フォローする", create_relationships_path(@user.id), method: :post, class: "btn btn-sm btn-success" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="mr-3">
+        <%= link_to "フォロー(#{@user.followings.count})", followings_path(@user.id), class: "btn btn-sm btn-info" %>
+      </div>
+      <div class="">
+        <%= link_to "フォロワー(#{@user.followers.count})", followers_path(@user.id), class: "btn btn-sm btn-info" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
     <h5 class="col-8 py-4 mx-auto">投稿一覧</h5>
   </div>
 
@@ -23,7 +43,6 @@
       <%= render "public/posts/posts_index", posts: @posts %>
     </div>
   </div>
-
 
   <div class="row">
     <p><%= paginate @posts %></p>

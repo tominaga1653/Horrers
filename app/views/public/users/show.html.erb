@@ -2,7 +2,16 @@
   <div class="row">
     <div class="col-md-10 col-lg-8 mx-auto">
       <div class="row">
-        <h4 class="col-8 py-4">マイページ</h4>
+        <h4 class="col-12 py-4">マイページ</h4>
+      </div>
+
+      <div class="row mb-3">
+        <div class="mr-4 ml-auto">
+          <%= link_to "フォロー(#{@user.followings.count})", followings_path(@user.id), class: "btn btn-sm btn-info" %>
+        </div>
+        <div>
+          <%= link_to "フォロワー(#{@user.followers.count})", followers_path(@user.id), class: "btn btn-sm btn-info" %>
+        </div>
       </div>
 
       <div class="row">
@@ -10,7 +19,7 @@
           <%= image_tag @user.get_image(170, 170), class: "rounded-circle card-img" %>
         </div>
 
-        <div class="col-9">
+        <div class="col-9 col-lg-10">
           <div class="row border-bottom border-secondary py-2">
             <div class="col-12 col-lg-4">
               ニックネーム
@@ -48,7 +57,6 @@
       <%= render "public/posts/posts_index", posts: @posts %>
     </div>
   </div>
-
 
   <div class="row">
     <div class="mx-auto">
