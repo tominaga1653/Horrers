@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get "/users/:id/followers", to: "relationships#followers", as: "followers"
 
     resources :posts, except: [:index] do
-      resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:create, :edit, :update, :destroy]
     end
     get "/search", to: "searchs#search"
     get "/search/detail", to: "searchs#detail"

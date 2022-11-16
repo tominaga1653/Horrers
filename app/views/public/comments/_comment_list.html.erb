@@ -14,8 +14,11 @@
       <% if comment.user == current_user %>
         <div class="row">
           <div class="col text-right">
+            <%= link_to "編集", edit_post_comment_path(comment.post, comment), class: "btn btn-sm btn-secondary w-50" %>
+          </div>
+          <div class="col text-center">
             <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true,
-              data: { confirm: '本当に削除してもよろしいですか？' }, class: "btn btn-sm btn-outline-danger w-25" %>
+              data: { confirm: '本当に削除してもよろしいですか？' }, class: "btn btn-sm btn-danger w-50" %>
           </div>
         </div>
       <% end %>

@@ -1,6 +1,6 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def create
     @post = Post.find(params[:post_id])
@@ -9,6 +9,18 @@ class Public::CommentsController < ApplicationController
     comment.save
     @comment = Comment.new
     flash.now[:notice] = "コメントを投稿しました。"
+  end
+
+  def edit
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    post = Post.find(params[:post_id])
+    comment = Comment.find(params[:id])
+    comment.update(comment_params)
+    redirect_to post_path(post), notice: "コメントを更新しました。"
   end
 
   def destroy

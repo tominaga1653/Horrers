@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <h4 class="col-7 py-4 mx-auto">コメント編集</h4>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7 mx-auto text-center">
+      <%= form_with model: [@post, @comment], local: true, method: :patch do |f| %>
+        <%= f.text_area :comment, rows: '3', :required => true, class: "form-control comment-textarea" %>
+        <%= f.submit "更新", class: "btn btn-sm btn-secondary w-50 mt-4" %>
+      <% end %>
+    </div>
+  </div>
+</div>
